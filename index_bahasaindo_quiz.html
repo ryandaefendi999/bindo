@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Materi & Soal Bahasa Indonesia Kelas 9</title>
+  <style>
+    :root{
+      --bg:#0f172a;
+      --card:rgba(15,23,42,.78);
+      --card-soft:rgba(30,41,59,.72);
+      --text:#f8fafc;
+      --muted:#cbd5e1;
+      --accent:#38bdf8;
+      --accent-2:#22c55e;
+      --danger:#ef4444;
+      --warn:#f59e0b;
+      --shadow:0 16px 40px rgba(0,0,0,.35);
+      --radius:24px;
+    }
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      padding:0;
+      min-height:100%;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:#000;
+    }
+    body{
+      background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.68)),
+        url("foto2.jpg") center center / cover fixed no-repeat;
+    }
+    .screen{
+      min-height:100vh;
+      padding:20px 14px 28px;
+      display:none;
+    }
+    .screen.active{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .container{
+      width:min(980px, 100%);
+      margin:auto;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .material-card{
+      padding:20px 16px 24px;
+    }
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height:1.15;
+      text-align:center;
+    }
+    .subtitle{
+      margin:0 0 18px;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.5;
+    }
+    .material-content{
+      max-height:68vh;
+      overflow:auto;
+      padding-right:4px;
+      line-height:1.7;
+      color:#f8fafc;
+      scroll-behavior:smooth;
+    }
+    .material-content h2{
+      margin:20px 0 8px;
+      font-size:22px;
+      color:#fff;
+    }
+    .material-content h3{
+      margin:16px 0 6px;
+      font-size:18px;
+      color:#fff;
+    }
+    .material-content p{
+      margin:0 0 12px;
+      color:#eef2ff;
+    }
+    .material-content strong{
+      color:#fff;
+    }
+    .material-content em{
+      color:#dbeafe;
+    }
+    .divider{
+      height:1px;
+      background:rgba(255,255,255,.12);
+      margin:16px 0;
+    }
+    .cta-wrap{
+      padding-top:16px;
+      display:flex;
+      justify-content:center;
+    }
+    .btn{
+      appearance:none;
+      border:none;
+      outline:none;
+      cursor:pointer;
+      color:white;
+      background:linear-gradient(135deg, var(--accent), #2563eb);
+      padding:14px 22px;
+      border-radius:999px;
+      font-size:16px;
+      font-weight:700;
+      box-shadow:0 12px 28px rgba(37,99,235,.35);
+      transition:transform .18s ease, opacity .18s ease;
+    }
+    .btn:active{ transform:scale(.98); }
+    .btn.secondary{
+      background:linear-gradient(135deg, #64748b, #334155);
+      box-shadow:none;
+    }
+    .btn.success{
+      background:linear-gradient(135deg, var(--accent-2), #16a34a);
+      box-shadow:0 12px 28px rgba(34,197,94,.28);
+    }
+    .quiz-wrap{
+      width:min(760px,100%);
+    }
+    .quiz-card{
+      padding:20px 16px 18px;
+    }
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      margin-bottom:14px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .progress{
+      height:10px;
+      width:100%;
+      border-radius:999px;
+      background:rgba(255,255,255,.12);
+      overflow:hidden;
+      margin-bottom:18px;
+    }
+    .bar{
+      height:100%;
+      width:0%;
+      background:linear-gradient(90deg, var(--accent), #60a5fa);
+      transition:width .35s ease;
+    }
+    .question{
+      font-size: clamp(22px, 4.7vw, 34px);
+      line-height:1.35;
+      margin:0 0 18px;
+      font-weight:700;
+    }
+    .options{
+      display:grid;
+      gap:12px;
+    }
+    .option{
+      border:none;
+      width:100%;
+      text-align:left;
+      color:#fff;
+      background:var(--card-soft);
+      padding:16px 18px;
+      border-radius:22px;
+      font-size:16px;
+      line-height:1.5;
+      border:1px solid rgba(255,255,255,.1);
+      cursor:pointer;
+      transition:transform .16s ease, background .16s ease, border-color .16s ease;
+    }
+    .option:hover, .option:active{
+      transform:translateY(-1px);
+      background:rgba(51,65,85,.92);
+    }
+    .option.correct{
+      background:rgba(34,197,94,.25);
+      border-color:rgba(34,197,94,.7);
+    }
+    .option.wrong{
+      background:rgba(239,68,68,.22);
+      border-color:rgba(239,68,68,.68);
+    }
+    .feedback{
+      display:none;
+      margin-top:18px;
+      padding:16px;
+      border-radius:20px;
+      background:rgba(15,23,42,.8);
+      border:1px solid rgba(255,255,255,.1);
+    }
+    .feedback.show{ display:block; }
+    .feedback .state{
+      font-size:18px;
+      font-weight:800;
+      margin-bottom:8px;
+    }
+    .feedback.correct .state{ color:#86efac; }
+    .feedback.wrong .state{ color:#fca5a5; }
+    .quote-label{
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      color:#93c5fd;
+      margin-bottom:6px;
+      font-weight:700;
+    }
+    .quote{
+      margin:0 0 12px;
+      color:#e2e8f0;
+      font-style:italic;
+      line-height:1.65;
+    }
+    .feedback-actions{
+      display:flex;
+      justify-content:flex-end;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:8px;
+    }
+    .result-card{
+      padding:24px 18px;
+      text-align:center;
+    }
+    .score{
+      font-size: clamp(42px, 12vw, 72px);
+      font-weight:900;
+      margin:8px 0;
+      color:#7dd3fc;
+    }
+    .result-text{
+      color:var(--muted);
+      line-height:1.7;
+      margin:0 0 18px;
+    }
+    .result-actions{
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .pill{
+      display:inline-block;
+      background:rgba(56,189,248,.18);
+      color:#dbeafe;
+      border:1px solid rgba(56,189,248,.25);
+      border-radius:999px;
+      padding:7px 12px;
+      font-size:13px;
+      margin-bottom:12px;
+    }
+    .music-note{
+      text-align:center;
+      color:#cbd5e1;
+      font-size:13px;
+      margin-top:10px;
+    }
+    @media (max-width:640px){
+      .screen{ padding:14px 10px 20px; }
+      .material-card, .quiz-card, .result-card{ border-radius:22px; }
+      .material-content{ max-height:66vh; }
+      .option{ font-size:15px; padding:15px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <audio id="bgm" loop preload="auto">
+    <source src="musik3.mp3" type="audio/mpeg">
+  </audio>
+
+  <section id="materialScreen" class="screen active">
+    <div class="container">
+      <div class="card material-card">
+        <h1>Materi Bahasa Indonesia Kelas 9</h1>
+        <p class="subtitle">Halaman pertama menampilkan materi persis seperti yang sudah dikirim sebelumnya. Setelah selesai membaca, tekan tombol di bawah untuk lanjut ke soal.</p>
+
+        <div class="material-content" id="materialContent">
+          <p>Bisa. Aku jawab ringkas sesuai kisi-kisinya. Ada satu catatan: di link yang bisa saya akses, materi <strong>teks eksplanasi, poster, teks laporan, diskusi, majas, dan makna puisi</strong> terlihat jelas. Bagian <strong>puisi lama vs puisi baru</strong> tidak tampak dibahas seterang bagian lain, jadi untuk dua poin itu aku lengkapi dengan ringkasan umum.</p>
+
+          <h2>Bab 4</h2>
+
+          <h3>1) Teks eksplanasi</h3>
+          <p>Teks eksplanasi adalah teks yang <strong>menceritakan sebab-akibat atau proses terjadinya suatu fenomena</strong> alam, sosial, budaya, dan lain-lain. Strukturnya: <strong>pernyataan umum → urutan penjelas/sebab-akibat → interpretasi</strong>. Buku juga menegaskan bahwa informasi dalam teks eksplanasi <strong>bersifat faktual</strong> dan dijelaskan secara berurutan dari awal sampai akhir.</p>
+
+          <p><strong>Contoh sederhana teks eksplanasi:</strong><br>
+          “Banjir terjadi karena curah hujan tinggi, saluran air tersumbat, dan daerah resapan berkurang. Air yang tidak terserap lalu meluap ke permukiman. Karena itu, banjir bisa dicegah dengan menjaga saluran air dan memperbanyak daerah resapan.”<br>
+          Contoh ini sesuai pola yang dijelaskan buku: ada fenomena, ada urutan sebab-akibat, lalu ada penutup/interpretasi.</p>
+
+          <h3>2) Poster: pengertian, fungsi, contoh</h3>
+          <p>Poster adalah media publikasi yang terdiri atas <strong>gambar, tulisan, atau gabungan keduanya</strong>. Fungsinya untuk <strong>memberikan penjelasan/eksplanasi</strong> agar pembaca memahami lalu mengikuti <strong>ajakan atau imbauan</strong> yang disampaikan. Di buku, poster dibagi dua secara umum: <strong>poster niaga/komersial</strong> untuk promosi barang atau jasa, dan <strong>poster layanan masyarakat</strong> untuk membangkitkan kepedulian pada isu tertentu seperti lingkungan, pendidikan, atau masalah sosial.</p>
+
+          <p><strong>Contoh poster:</strong><br>
+          Poster niaga: poster promosi jasa cuci sepatu.<br>
+          Poster layanan masyarakat: poster ajakan menjaga lingkungan atau poster wisata edukatif seperti poster tentang dugong/laut yang dibahas di bab V.</p>
+
+          <h3>3) Kalimat sebab-akibat</h3>
+          <p>Kalimat sebab-akibat adalah kalimat yang menunjukkan <strong>hubungan antara penyebab dan akibat</strong>. Materi sebab-akibat di buku muncul sebagai ciri isi teks eksplanasi dan juga ditampilkan dalam infografik/poster. Kata hubung yang biasa dipakai misalnya <strong>karena, sebab, sehingga, akibatnya</strong>.</p>
+
+          <p><strong>Contoh kalimat sebab-akibat:</strong><br>
+          - Karena hujan turun sangat deras, jalanan menjadi banjir.<br>
+          - Rina belajar dengan rajin sehingga nilainya meningkat.<br>
+          - Saluran air tersumbat, akibatnya air meluap ke rumah warga.</p>
+
+          <h2>Bab 5</h2>
+
+          <h3>4) Teks laporan: pengertian dan ciri</h3>
+          <p>Di bab V, buku menempatkan “memaknai teks laporan” dengan contoh teks <strong>“Smong, Kearifan Lokal untuk Mitigasi Bencana”</strong> dan latihan mencatat informasi dari video/teks. Dari cara penyajiannya, teks laporan dalam konteks buku ini dapat dipahami sebagai teks yang <strong>menyajikan informasi faktual tentang suatu objek, peristiwa, atau hasil pengamatan secara runtut dan informatif</strong>. Ciri-cirinya: isinya <strong>berdasarkan fakta</strong>, informasinya <strong>jelas dan sistematis</strong>, serta bertujuan <strong>memberi informasi</strong> kepada pembaca.</p>
+
+          <h3>5) Majas dan puisi</h3>
+          <p>Buku menjelaskan bahwa untuk menganalisis puisi, kita perlu memahami majas. Pada bagian ini, puisi dipahami sebagai karya yang bahasanya <strong>dipilih dan ditata secara cermat</strong> agar menimbulkan tanggapan khusus melalui bunyi, irama, dan makna. Buku juga memberi contoh jenis majas dalam puisi, seperti <strong>perbandingan/simile, metafora, personifikasi, perumpamaan epos, dan sinekdoke</strong>.</p>
+
+          <p><strong>Pengertian beberapa majas yang ada di buku:</strong><br>
+          - <strong>Majas perbandingan/simile</strong>: membandingkan dua hal dengan kata seperti <em>bagai, bagaikan, seperti, laksana</em>.<br>
+          - <strong>Metafora</strong>: perbandingan langsung tanpa kata pembanding.<br>
+          - <strong>Personifikasi</strong>: benda mati dibuat seolah-olah hidup seperti manusia.</p>
+
+          <h3>6) Contoh puisi lama dan puisi baru</h3>
+          <p>Di halaman yang terindeks dari link, contoh puisi yang jelas dibahas adalah puisi modern <strong>“Perahu Kertas” karya Sapardi Djoko Damono</strong>, jadi itu bisa dijadikan <strong>contoh puisi baru</strong>. Untuk <strong>puisi lama</strong>, bagian itu tidak tampak dibahas langsung di halaman yang berhasil saya akses; secara umum puisi lama terikat aturan, sedangkan puisi baru lebih bebas.</p>
+
+          <p><strong>Contoh puisi lama (pantun, aku buatkan sederhana):</strong><br>
+          Jalan-jalan ke tepi kali<br>
+          Singgah sebentar membeli ketan<br>
+          Rajin belajar setiap hari<br>
+          Agar tercapai masa depan</p>
+
+          <p><strong>Contoh puisi baru dari buku:</strong><br>
+          “<strong>Perahu Kertas</strong>” karya <strong>Sapardi Djoko Damono</strong>.</p>
+
+          <h3>7) Perbedaan puisi lama dan puisi baru</h3>
+          <p>Puisi lama <strong>terikat aturan</strong> seperti jumlah baris, bait, suku kata, dan rima. Puisi baru <strong>lebih bebas</strong> dalam bentuk, baris, suku kata, dan rimanya. Contoh puisi lama: pantun, gurindam, mantra. Contoh puisi baru: puisi bebas modern seperti “Perahu Kertas”.</p>
+
+          <h3>8) Makna puisi</h3>
+          <p>Buku memberi langkah untuk menemukan makna puisi: baca berulang, pahami judul, cari kata sulit, cari majas, kaitkan dengan pengetahuan, lalu simpulkan. Untuk puisi <strong>“Perahu Kertas”</strong>, buku memberi contoh simpulan bahwa puisi itu menyimpan pesan tentang <strong>harapan atau cita-cita yang sangat didambakan</strong>, yang dilambangkan oleh perahu kertas yang dilayarkan lalu ditunggu kabarnya.</p>
+
+          <h2>Bab 6 / materi diskusi</h2>
+
+          <h3>9) Diskusi: pengertian</h3>
+          <p>Diskusi adalah <strong>pertemuan untuk bertukar pikiran atau membahas suatu masalah bersama-sama</strong>. Buku juga menjelaskan ciri diskusi yang baik: ada moderator, semua peserta mendapat kesempatan berbicara, peserta saling menanggapi, dan di akhir moderator menyimpulkan hasil diskusi.</p>
+
+          <h3>10) Pro dan kontra</h3>
+          <p>Di buku ada contoh topik <strong>“Pro dan Kontra Media Sosial untuk Remaja.”</strong> Dalam konteks diskusi, <strong>pro</strong> berarti pihak yang <strong>mendukung/setuju</strong>, sedangkan <strong>kontra</strong> berarti pihak yang <strong>menolak/tidak setuju</strong> terhadap suatu pendapat atau isu. Buku meminta peserta berdiskusi aktif dengan merujuk informasi yang tepat.</p>
+
+          <h3>11) Fakta, opini, asumsi</h3>
+          <p>- <strong>Fakta</strong>: hal yang benar-benar ada/terjadi; bisa dibuktikan. Contoh dari buku: “Ir. Soekarno adalah proklamator Indonesia.”<br>
+          - <strong>Opini</strong>: pendapat atau penilaian pribadi. Contoh dari buku: “Menurut saya, rambut keriting kadang terlihat lebih indah daripada rambut lurus.”<br>
+          - <strong>Asumsi</strong>: dugaan yang diterima sebagai dasar; belum pasti benar. Contoh dari buku: “Mendung gelap adalah pertanda akan turun hujan.”</p>
+
+          <p>Kalau kamu mau, aku bisa lanjut bikin ini jadi <strong>catatan belajar rapi per bab</strong> yang tinggal kamu hafal untuk ujian.</p>
+        </div>
+
+        <div class="divider"></div>
+        <div class="cta-wrap">
+          <button class="btn" id="startBtn">Lanjut ke soal</button>
+        </div>
+        <div class="music-note">Musik latar: <strong>musik3.mp3</strong> • Latar belakang: <strong>foto2.jpg</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quizScreen" class="screen">
+    <div class="quiz-wrap">
+      <div class="card quiz-card">
+        <div class="pill">Latihan soal berdasarkan materi halaman 1</div>
+        <div class="topbar">
+          <span id="counter">Soal 1</span>
+          <span id="scoreLive">Skor: 0</span>
+        </div>
+        <div class="progress"><div class="bar" id="progressBar"></div></div>
+
+        <h2 class="question" id="questionText"></h2>
+        <div class="options" id="optionsWrap"></div>
+
+        <div class="feedback" id="feedbackBox">
+          <div class="state" id="feedbackState"></div>
+          <div class="quote-label">Bukti dari materi halaman 1</div>
+          <p class="quote" id="feedbackQuote"></p>
+          <div class="feedback-actions">
+            <button class="btn success" id="nextBtn">Soal berikutnya</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="resultScreen" class="screen">
+    <div class="container" style="max-width:720px">
+      <div class="card result-card">
+        <div class="pill">Selesai</div>
+        <h2 style="margin:0 0 8px;">Kamu sudah menyelesaikan semua soal</h2>
+        <div class="score" id="finalScore">0</div>
+        <p class="result-text" id="finalText"></p>
+        <div class="result-actions">
+          <button class="btn success" id="retryBtn">Ulangi soal</button>
+          <button class="btn secondary" id="backBtn">Kembali ke materi</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const questions = [
+      {
+        q: "Apa pengertian teks eksplanasi?",
+        options: [
+          "Teks yang menceritakan sebab-akibat atau proses terjadinya suatu fenomena",
+          "Teks yang berisi imajinasi penulis dalam bentuk bebas",
+          "Teks yang hanya memuat ajakan singkat tanpa penjelasan",
+          "Teks yang hanya memuat pendapat pribadi"
+        ],
+        answer: 0,
+        quote: "Teks eksplanasi adalah teks yang menceritakan sebab-akibat atau proses terjadinya suatu fenomena alam, sosial, budaya, dan lain-lain."
+      },
+      {
+        q: "Manakah urutan struktur teks eksplanasi yang benar?",
+        options: [
+          "Interpretasi → pernyataan umum → urutan penjelas",
+          "Pernyataan umum → urutan penjelas/sebab-akibat → interpretasi",
+          "Urutan penjelas → opini → simpulan",
+          "Pembuka → iklan → penutup"
+        ],
+        answer: 1,
+        quote: "Strukturnya: pernyataan umum → urutan penjelas/sebab-akibat → interpretasi."
+      },
+      {
+        q: "Fungsi poster menurut materi adalah untuk ...",
+        options: [
+          "menceritakan pengalaman pribadi penulis",
+          "memberikan penjelasan/eksplanasi agar pembaca memahami lalu mengikuti ajakan atau imbauan",
+          "menghibur pembaca dengan bahasa puitis",
+          "membandingkan dua benda hidup"
+        ],
+        answer: 1,
+        quote: "Fungsinya untuk memberikan penjelasan/eksplanasi agar pembaca memahami lalu mengikuti ajakan atau imbauan yang disampaikan."
+      },
+      {
+        q: "Poster promosi barang atau jasa termasuk jenis ...",
+        options: [
+          "poster layanan masyarakat",
+          "poster diskusi",
+          "poster niaga/komersial",
+          "poster puisi"
+        ],
+        answer: 2,
+        quote: "Di buku, poster dibagi dua secara umum: poster niaga/komersial untuk promosi barang atau jasa, dan poster layanan masyarakat untuk membangkitkan kepedulian pada isu tertentu."
+      },
+      {
+        q: "Kata hubung yang biasa dipakai dalam kalimat sebab-akibat adalah ...",
+        options: [
+          "karena, sebab, sehingga, akibatnya",
+          "tetapi, namun, sedangkan, melainkan",
+          "dan, atau, lalu, kemudian",
+          "jika, bila, andaikan, semoga"
+        ],
+        answer: 0,
+        quote: "Kata hubung yang biasa dipakai misalnya karena, sebab, sehingga, akibatnya."
+      },
+      {
+        q: "Ciri utama teks laporan dalam materi adalah ...",
+        options: [
+          "isinya hanya berupa pendapat penulis",
+          "menyajikan informasi faktual tentang suatu objek, peristiwa, atau hasil pengamatan secara runtut dan informatif",
+          "menggunakan bahasa rahasia dan penuh simbol",
+          "selalu berbentuk puisi empat baris"
+        ],
+        answer: 1,
+        quote: "Teks laporan dalam konteks buku ini dapat dipahami sebagai teks yang menyajikan informasi faktual tentang suatu objek, peristiwa, atau hasil pengamatan secara runtut dan informatif."
+      },
+      {
+        q: "Majas perbandingan/simile adalah ...",
+        options: [
+          "benda mati dibuat seolah-olah hidup seperti manusia",
+          "perbandingan langsung tanpa kata pembanding",
+          "membandingkan dua hal dengan kata seperti bagai, bagaikan, seperti, laksana",
+          "pendapat pribadi yang belum pasti benar"
+        ],
+        answer: 2,
+        quote: "Majas perbandingan/simile: membandingkan dua hal dengan kata seperti bagai, bagaikan, seperti, laksana."
+      },
+      {
+        q: "Pengertian personifikasi adalah ...",
+        options: [
+          "benda mati dibuat seolah-olah hidup seperti manusia",
+          "perbandingan langsung tanpa kata pembanding",
+          "membahas masalah bersama-sama",
+          "teks yang memberi informasi faktual"
+        ],
+        answer: 0,
+        quote: "Personifikasi: benda mati dibuat seolah-olah hidup seperti manusia."
+      },
+      {
+        q: "Perbedaan yang tepat antara puisi lama dan puisi baru adalah ...",
+        options: [
+          "Puisi lama lebih bebas, puisi baru terikat aturan",
+          "Puisi lama terikat aturan, puisi baru lebih bebas",
+          "Keduanya selalu sama dalam bentuk dan rima",
+          "Puisi baru hanya terdiri dari pantun"
+        ],
+        answer: 1,
+        quote: "Puisi lama terikat aturan seperti jumlah baris, bait, suku kata, dan rima. Puisi baru lebih bebas dalam bentuk, baris, suku kata, dan rimanya."
+      },
+      {
+        q: "Makna puisi “Perahu Kertas” menurut materi adalah ...",
+        options: [
+          "tentang kemarahan kepada laut",
+          "tentang harapan atau cita-cita yang sangat didambakan",
+          "tentang poster lingkungan",
+          "tentang pro dan kontra remaja"
+        ],
+        answer: 1,
+        quote: "Untuk puisi “Perahu Kertas”, buku memberi contoh simpulan bahwa puisi itu menyimpan pesan tentang harapan atau cita-cita yang sangat didambakan."
+      },
+      {
+        q: "Diskusi adalah ...",
+        options: [
+          "media publikasi yang terdiri atas gambar dan tulisan",
+          "pertemuan untuk bertukar pikiran atau membahas suatu masalah bersama-sama",
+          "dugaan yang diterima sebagai dasar",
+          "hakikat puisi yang terikat rima"
+        ],
+        answer: 1,
+        quote: "Diskusi adalah pertemuan untuk bertukar pikiran atau membahas suatu masalah bersama-sama."
+      },
+      {
+        q: "Dalam diskusi, pihak yang mendukung/setuju disebut ...",
+        options: [
+          "kontra",
+          "opini",
+          "pro",
+          "asumsi"
+        ],
+        answer: 2,
+        quote: "Dalam konteks diskusi, pro berarti pihak yang mendukung/setuju, sedangkan kontra berarti pihak yang menolak/tidak setuju terhadap suatu pendapat atau isu."
+      },
+      {
+        q: "Kalimat “Mendung gelap adalah pertanda akan turun hujan.” termasuk ...",
+        options: [
+          "fakta",
+          "asumsi",
+          "poster niaga",
+          "teks laporan"
+        ],
+        answer: 1,
+        quote: "Asumsi: dugaan yang diterima sebagai dasar; belum pasti benar. Contoh dari buku: “Mendung gelap adalah pertanda akan turun hujan.”"
+      }
+    ];
+
+    const materialScreen = document.getElementById('materialScreen');
+    const quizScreen = document.getElementById('quizScreen');
+    const resultScreen = document.getElementById('resultScreen');
+    const startBtn = document.getElementById('startBtn');
+    const bgm = document.getElementById('bgm');
+
+    const counter = document.getElementById('counter');
+    const scoreLive = document.getElementById('scoreLive');
+    const questionText = document.getElementById('questionText');
+    const optionsWrap = document.getElementById('optionsWrap');
+    const feedbackBox = document.getElementById('feedbackBox');
+    const feedbackState = document.getElementById('feedbackState');
+    const feedbackQuote = document.getElementById('feedbackQuote');
+    const nextBtn = document.getElementById('nextBtn');
+    const progressBar = document.getElementById('progressBar');
+
+    const finalScore = document.getElementById('finalScore');
+    const finalText = document.getElementById('finalText');
+    const retryBtn = document.getElementById('retryBtn');
+    const backBtn = document.getElementById('backBtn');
+
+    let current = 0;
+    let score = 0;
+    let answered = false;
+
+    function showScreen(name){
+      [materialScreen, quizScreen, resultScreen].forEach(s => s.classList.remove('active'));
+      if(name === 'material') materialScreen.classList.add('active');
+      if(name === 'quiz') quizScreen.classList.add('active');
+      if(name === 'result') resultScreen.classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    function tryPlayMusic(){
+      bgm.play().catch(() => {});
+    }
+
+    function renderQuestion(){
+      const item = questions[current];
+      answered = false;
+
+      counter.textContent = `Soal ${current + 1} dari ${questions.length}`;
+      scoreLive.textContent = `Skor: ${score}`;
+      questionText.textContent = item.q;
+      optionsWrap.innerHTML = '';
+      feedbackBox.className = 'feedback';
+      feedbackState.textContent = '';
+      feedbackQuote.textContent = '';
+      progressBar.style.width = `${(current / questions.length) * 100}%`;
+
+      item.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'option';
+        btn.textContent = opt;
+        btn.addEventListener('click', () => selectAnswer(idx, btn));
+        optionsWrap.appendChild(btn);
+      });
+    }
+
+    function selectAnswer(selectedIndex, selectedBtn){
+      if(answered) return;
+      answered = true;
+
+      const item = questions[current];
+      const optionButtons = [...document.querySelectorAll('.option')];
+
+      optionButtons.forEach((btn, idx) => {
+        btn.disabled = true;
+        if(idx === item.answer) btn.classList.add('correct');
+      });
+
+      if(selectedIndex !== item.answer){
+        selectedBtn.classList.add('wrong');
+        feedbackBox.classList.add('show', 'wrong');
+        feedbackState.textContent = 'Belum tepat.';
+      } else {
+        score++;
+        scoreLive.textContent = `Skor: ${score}`;
+        feedbackBox.classList.add('show', 'correct');
+        feedbackState.textContent = 'Jawaban benar.';
+      }
+
+      feedbackQuote.textContent = item.quote;
+      progressBar.style.width = `${((current + 1) / questions.length) * 100}%`;
+    }
+
+    function showResult(){
+      finalScore.textContent = `${score}/${questions.length}`;
+      const nilai = Math.round((score / questions.length) * 100);
+      let pesan = '';
+      if(nilai >= 90) pesan = 'Mantap, pemahaman kamu sudah sangat kuat.';
+      else if(nilai >= 75) pesan = 'Bagus, tinggal sedikit lagi biar makin mantap.';
+      else if(nilai >= 60) pesan = 'Lumayan, coba baca lagi materi halaman 1 lalu ulangi.';
+      else pesan = 'Tenang, baca ulang materinya pelan-pelan lalu coba lagi.';
+      finalText.textContent = `Nilai kamu ${nilai}. ${pesan}`;
+      showScreen('result');
+    }
+
+    startBtn.addEventListener('click', () => {
+      tryPlayMusic();
+      current = 0;
+      score = 0;
+      showScreen('quiz');
+      renderQuestion();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if(!answered) return;
+      current++;
+      if(current >= questions.length){
+        showResult();
+      } else {
+        renderQuestion();
+      }
+    });
+
+    retryBtn.addEventListener('click', () => {
+      tryPlayMusic();
+      current = 0;
+      score = 0;
+      showScreen('quiz');
+      renderQuestion();
+    });
+
+    backBtn.addEventListener('click', () => {
+      showScreen('material');
+      document.getElementById('materialContent').scrollTo({top:0, behavior:'smooth'});
+    });
+
+    document.addEventListener('click', tryPlayMusic, { once:true });
+  </script>
+</body>
+</html>
