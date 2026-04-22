@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bahasa Indonesia Update Kisi-Kisi</title>
+<style>
+:root {
+  --card: rgba(15,23,42,.84); --card-soft: rgba(30,41,59,.78); --text:#f8fafc; --muted:#cbd5e1;
+  --accent:#38bdf8; --accent2:#22c55e; --shadow:0 18px 42px rgba(0,0,0,.35); --radius:24px;
+}
+* { box-sizing:border-box; }
+html,body { margin:0; padding:0; min-height:100%; font-family:Arial,Helvetica,sans-serif; color:var(--text); background:#000; }
+body { background:linear-gradient(rgba(0,0,0,.58), rgba(0,0,0,.72)), url("foto2.jpg") center/cover fixed no-repeat; }
+.screen { min-height:100vh; padding:18px 12px 24px; display:none; }
+.screen.active { display:flex; align-items:center; justify-content:center; }
+.container { width:min(980px,100%); margin:auto; }
+.card { background:var(--card); border:1px solid rgba(255,255,255,.12); border-radius:var(--radius); box-shadow:var(--shadow); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); }
+.material-card,.quiz-card,.result-card { padding:20px 16px 22px; }
+h1 { margin:0 0 10px; font-size:clamp(26px,5vw,42px); line-height:1.15; text-align:center; }
+.subtitle { margin:0 0 18px; text-align:center; color:var(--muted); font-size:14px; line-height:1.5; }
+.material-content { max-height:68vh; overflow:auto; padding-right:4px; line-height:1.7; color:#f8fafc; }
+.material-content h3 { margin:16px 0 6px; font-size:18px; }
+.material-content p { margin:0 0 12px; color:#eef2ff; }
+.divider { height:1px; background:rgba(255,255,255,.12); margin:16px 0; }
+.cta-wrap { padding-top:14px; display:flex; justify-content:center; }
+.btn { appearance:none; border:none; cursor:pointer; color:white; background:linear-gradient(135deg,var(--accent),#2563eb); padding:14px 22px; border-radius:999px; font-size:16px; font-weight:700; box-shadow:0 12px 28px rgba(37,99,235,.35); }
+.btn.secondary { background:linear-gradient(135deg,#64748b,#334155); box-shadow:none; }
+.btn.success { background:linear-gradient(135deg,var(--accent2),#16a34a); box-shadow:0 12px 28px rgba(34,197,94,.28); }
+.pill { display:inline-block; background:rgba(56,189,248,.18); color:#dbeafe; border:1px solid rgba(56,189,248,.25); border-radius:999px; padding:7px 12px; font-size:13px; margin-bottom:12px; }
+.note { text-align:center; color:var(--muted); font-size:13px; margin-top:10px; line-height:1.5; }
+.topbar { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:14px; color:var(--muted); font-size:14px; }
+.progress { height:10px; width:100%; border-radius:999px; background:rgba(255,255,255,.12); overflow:hidden; margin-bottom:18px; }
+.bar { height:100%; width:0%; background:linear-gradient(90deg,var(--accent),#60a5fa); transition:width .35s ease; }
+.question { font-size:clamp(22px,4.8vw,34px); line-height:1.35; margin:0 0 18px; font-weight:700; }
+.options { display:grid; gap:12px; }
+.option { border:none; width:100%; text-align:left; color:#fff; background:var(--card-soft); padding:16px 18px; border-radius:22px; font-size:16px; line-height:1.5; border:1px solid rgba(255,255,255,.1); cursor:pointer; }
+.option.correct { background:rgba(34,197,94,.25); border-color:rgba(34,197,94,.7); }
+.option.wrong { background:rgba(239,68,68,.22); border-color:rgba(239,68,68,.68); }
+.feedback { display:none; margin-top:18px; padding:16px; border-radius:20px; background:rgba(15,23,42,.82); border:1px solid rgba(255,255,255,.1); }
+.feedback.show { display:block; }
+.feedback .state { font-size:18px; font-weight:800; margin-bottom:8px; }
+.feedback.correct .state { color:#86efac; }
+.feedback.wrong .state { color:#fca5a5; }
+.quote-label { font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:#93c5fd; margin-bottom:6px; font-weight:700; }
+.quote { margin:0 0 12px; color:#e2e8f0; font-style:italic; line-height:1.65; }
+.feedback-actions { display:flex; justify-content:flex-end; margin-top:8px; }
+.result-card { text-align:center; }
+.score { font-size:clamp(42px,12vw,72px); font-weight:900; margin:8px 0; color:#7dd3fc; }
+.result-text { color:var(--muted); line-height:1.7; margin:0 0 18px; }
+.result-actions { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+@media (max-width:640px) {
+  .screen { padding:14px 10px 20px; }
+  .material-content { max-height:66vh; }
+  .option { font-size:15px; padding:15px 16px; }
+}
+</style>
+</head>
+<body>
+<audio id="bgm" autoplay loop preload="auto"><source src="musik3.mp3" type="audio/mpeg"></audio>
+
+<section id="materialScreen" class="screen active">
+  <div class="container">
+    <div class="card material-card">
+      <h1>Bahasa Indonesia • Update Kisi-Kisi</h1>
+      <p class="subtitle">Versi tambahan dari kisi-kisi baru. Halaman pertama berisi materi, lalu halaman kedua berisi 50 soal dengan bukti kutipan dari materi halaman 1.</p>
+      <div class="material-content" id="materialContent"><h3>Tambahan kisi-kisi Bahasa Indonesia</h3><p>Bagian ini menambahkan materi baru ke versi sebelumnya, fokus pada teks eksplanasi, laporan hasil analisis puisi, dan teks argumentasi.</p><h3>Teks eksplanasi: tujuan</h3><p>Tujuan teks eksplanasi adalah menjelaskan proses terjadinya suatu fenomena atau hubungan sebab-akibat suatu peristiwa secara logis, runtut, dan informatif.</p><h3>Teks eksplanasi: struktur</h3><p>Struktur teks eksplanasi terdiri atas pernyataan umum, deretan penjelas, dan interpretasi atau penutup.</p><h3>Teks eksplanasi: konjungsi</h3><p>Konjungsi yang sering digunakan dalam teks eksplanasi antara lain karena, sehingga, sebab, akibatnya, lalu, kemudian, dan oleh karena itu.</p><h3>Teks eksplanasi: bagian isi</h3><p>Bagian penting teks eksplanasi meliputi pengenalan fenomena, penjelasan proses atau sebab-akibat, dan penutup atau simpulan.</p><h3>Teks eksplanasi: kalimat yang sesuai</h3><p>Kalimat yang sesuai untuk teks eksplanasi harus bersifat faktual, logis, jelas, dan menjelaskan proses atau sebab-akibat, bukan sekadar pendapat pribadi.</p><h3>Kalimat efektif dan tidak efektif</h3><p>Kalimat efektif adalah kalimat yang jelas, hemat, tepat, dan mudah dipahami. Kalimat tidak efektif biasanya bertele-tele, rancu, atau memakai kata yang mubazir.</p><h3>Laporan hasil analisis puisi: tujuan</h3><p>Tujuan laporan hasil analisis puisi adalah menyampaikan hasil pemahaman dan penafsiran terhadap puisi secara sistematis dan objektif.</p><h3>Laporan hasil analisis puisi: unsur intrinsik</h3><p>Unsur intrinsik puisi meliputi tema, diksi, majas, rima, amanat, nada, suasana, dan tipografi.</p><h3>Laporan hasil analisis puisi: unsur ekstrinsik</h3><p>Unsur ekstrinsik puisi adalah unsur dari luar karya, misalnya latar belakang penyair, kondisi sosial, budaya, dan pengalaman yang memengaruhi puisi.</p><h3>Laporan hasil analisis puisi: struktur</h3><p>Struktur laporan hasil analisis puisi umumnya terdiri atas identitas puisi, pendahuluan, pembahasan unsur-unsur puisi, dan simpulan.</p><h3>Diksi</h3><p>Diksi adalah pilihan kata yang digunakan penyair untuk menimbulkan makna, rasa, dan efek tertentu.</p><h3>Majas</h3><p>Majas adalah gaya bahasa yang dipakai untuk menimbulkan efek keindahan atau makna tertentu, misalnya metafora, personifikasi, dan simile.</p><h3>Rima</h3><p>Rima adalah pengulangan bunyi pada puisi yang menimbulkan musikalitas atau keindahan bunyi.</p><h3>Amanat</h3><p>Amanat adalah pesan atau nilai yang ingin disampaikan penyair kepada pembaca.</p><h3>Bahasa laporan</h3><p>Bahasa dalam laporan hasil analisis puisi sebaiknya baku, jelas, objektif, sistematis, dan tidak berlebihan.</p><h3>Tipografi puisi</h3><p>Tipografi puisi adalah bentuk visual puisi, seperti susunan baris, bait, dan tata letak yang mendukung makna puisi.</p><h3>Perbedaan resensi dan laporan hasil analisis puisi</h3><p>Resensi menilai dan memberi ulasan terhadap karya secara umum, sedangkan laporan hasil analisis puisi lebih fokus menjelaskan unsur-unsur puisi secara sistematis.</p><h3>Nada puisi</h3><p>Nada puisi adalah sikap penyair terhadap pembaca atau terhadap hal yang dibicarakan, misalnya menggurui, sedih, marah, atau lembut.</p><h3>Suasana puisi</h3><p>Suasana puisi adalah keadaan jiwa atau perasaan yang dirasakan pembaca setelah membaca puisi, misalnya haru, sedih, tenang, atau semangat.</p><h3>Teks argumentasi: tujuan</h3><p>Tujuan teks argumentasi adalah meyakinkan pembaca terhadap suatu pendapat dengan alasan, fakta, dan data yang logis.</p><h3>Teks argumentasi: struktur</h3><p>Struktur teks argumentasi umumnya terdiri atas pendapat atau tesis, rangkaian argumentasi, dan penegasan ulang.</p><h3>Bagian argumentasi</h3><p>Bagian argumentasi berisi alasan, penjelasan, contoh, data, atau bukti yang mendukung pendapat penulis.</p><h3>Penegasan ulang</h3><p>Penegasan ulang adalah bagian akhir teks argumentasi yang menekankan kembali pendapat penulis setelah disertai alasan dan bukti.</p><h3>Ciri kalimat fakta</h3><p>Kalimat fakta adalah kalimat yang dapat dibuktikan kebenarannya dengan data, angka, peristiwa, atau kenyataan yang nyata.</p><h3>Opini</h3><p>Opini adalah pendapat, penilaian, atau dugaan pribadi yang belum tentu dapat dibuktikan secara mutlak.</p><h3>Fungsi data</h3><p>Data dalam teks argumentasi berfungsi memperkuat pendapat agar lebih meyakinkan dan tidak sekadar opini.</p><h3>Konjungsi dalam argumentasi</h3><p>Konjungsi yang sering dipakai dalam teks argumentasi antara lain karena, sebab, oleh karena itu, namun, jadi, selain itu, dan dengan demikian.</p></div>
+      <div class="divider"></div>
+      <div class="cta-wrap"><button class="btn" id="startBtn">Lanjut ke soal</button></div>
+      <div class="note">50 soal • 1 soal per halaman • musik: <strong>musik3.mp3</strong> • latar: <strong>foto2.jpg</strong></div>
+    </div>
+  </div>
+</section>
+
+<section id="quizScreen" class="screen">
+  <div class="container" style="max-width:760px;">
+    <div class="card quiz-card">
+      <div class="pill">50 soal tambahan Bahasa Indonesia</div>
+      <div class="topbar"><span id="counter">Soal 1 dari 50</span><span id="scoreLive">Skor: 0</span></div>
+      <div class="progress"><div class="bar" id="progressBar"></div></div>
+      <h2 class="question" id="questionText"></h2>
+      <div class="options" id="optionsWrap"></div>
+      <div class="feedback" id="feedbackBox">
+        <div class="state" id="feedbackState"></div>
+        <div class="quote-label">Bukti dari materi halaman 1</div>
+        <p class="quote" id="feedbackQuote"></p>
+        <div class="feedback-actions"><button class="btn success" id="nextBtn">Soal berikutnya</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="resultScreen" class="screen">
+  <div class="container" style="max-width:720px;">
+    <div class="card result-card">
+      <div class="pill">Selesai</div>
+      <h2 style="margin:0 0 8px;">Kamu sudah menyelesaikan semua soal</h2>
+      <div class="score" id="finalScore">0/50</div>
+      <p class="result-text" id="finalText"></p>
+      <div class="result-actions">
+        <button class="btn success" id="retryBtn">Ulangi soal</button>
+        <button class="btn secondary" id="backBtn">Kembali ke materi</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+const questions = [{"q": "Tujuan teks eksplanasi adalah ...", "options": ["menjelaskan proses terjadinya fenomena atau hubungan sebab-akibat secara logis", "menghibur pembaca dengan cerita lucu", "membujuk pembaca membeli barang", "menyampaikan pendapat tanpa bukti"], "answer": 0, "quote": "Tujuan teks eksplanasi adalah menjelaskan proses terjadinya suatu fenomena atau hubungan sebab-akibat suatu peristiwa secara logis, runtut, dan informatif."}, {"q": "Struktur teks eksplanasi terdiri atas ...", "options": ["pernyataan umum, deretan penjelas, interpretasi", "pembuka, konflik, resolusi", "tesis, argumentasi, penegasan ulang", "judul, data, simpulan"], "answer": 0, "quote": "Struktur teks eksplanasi terdiri atas pernyataan umum, deretan penjelas, dan interpretasi atau penutup."}, {"q": "Konjungsi yang sering dipakai dalam teks eksplanasi adalah ...", "options": ["karena, sehingga, sebab", "wah, aduh, oh", "aku, kamu, dia", "dan, atau, tetapi saja"], "answer": 0, "quote": "Konjungsi yang sering digunakan dalam teks eksplanasi antara lain karena, sehingga, sebab, akibatnya, lalu, kemudian, dan oleh karena itu."}, {"q": "Bagian awal teks eksplanasi berisi ...", "options": ["pengenalan fenomena", "kritik terhadap puisi", "harga suatu produk", "daftar pustaka"], "answer": 0, "quote": "Bagian penting teks eksplanasi meliputi pengenalan fenomena, penjelasan proses atau sebab-akibat, dan penutup atau simpulan."}, {"q": "Kalimat yang sesuai untuk teks eksplanasi harus ...", "options": ["faktual dan logis", "penuh tebakan", "sekadar perasaan penulis", "berisi candaan"], "answer": 0, "quote": "Kalimat yang sesuai untuk teks eksplanasi harus bersifat faktual, logis, jelas, dan menjelaskan proses atau sebab-akibat, bukan sekadar pendapat pribadi."}, {"q": "Kalimat efektif adalah kalimat yang ...", "options": ["jelas, hemat, tepat, dan mudah dipahami", "panjang dan bertele-tele", "selalu memakai kata asing", "sulit dimengerti"], "answer": 0, "quote": "Kalimat efektif adalah kalimat yang jelas, hemat, tepat, dan mudah dipahami. Kalimat tidak efektif biasanya bertele-tele, rancu, atau memakai kata yang mubazir."}, {"q": "Kalimat tidak efektif biasanya ...", "options": ["rancu atau mubazir", "jelas dan tepat", "hemat kata", "singkat dan padat"], "answer": 0, "quote": "Kalimat efektif adalah kalimat yang jelas, hemat, tepat, dan mudah dipahami. Kalimat tidak efektif biasanya bertele-tele, rancu, atau memakai kata yang mubazir."}, {"q": "Bagian penutup dalam teks eksplanasi berupa ...", "options": ["interpretasi atau simpulan", "iklan", "dialog", "resensi"], "answer": 0, "quote": "Struktur teks eksplanasi terdiri atas pernyataan umum, deretan penjelas, dan interpretasi atau penutup."}, {"q": "Teks eksplanasi menekankan hubungan ...", "options": ["sebab-akibat atau proses", "tokoh dan latar", "harga dan diskon", "pujian dan kritik"], "answer": 0, "quote": "Tujuan teks eksplanasi adalah menjelaskan proses terjadinya suatu fenomena atau hubungan sebab-akibat suatu peristiwa secara logis, runtut, dan informatif."}, {"q": "Konjungsi 'oleh karena itu' dalam teks eksplanasi termasuk ...", "options": ["kata hubung", "kata benda", "kata ganti", "kata seru"], "answer": 0, "quote": "Konjungsi yang sering digunakan dalam teks eksplanasi antara lain karena, sehingga, sebab, akibatnya, lalu, kemudian, dan oleh karena itu."}, {"q": "Kalimat 'Banjir terjadi karena saluran tersumbat' sesuai teks eksplanasi karena ...", "options": ["menjelaskan sebab-akibat", "berisi lelucon", "berisi penilaian pribadi", "berisi ajakan"], "answer": 0, "quote": "Kalimat yang sesuai untuk teks eksplanasi harus bersifat faktual, logis, jelas, dan menjelaskan proses atau sebab-akibat, bukan sekadar pendapat pribadi."}, {"q": "Pernyataan umum pada teks eksplanasi berfungsi untuk ...", "options": ["memperkenalkan fenomena yang akan dijelaskan", "menyimpulkan seluruh isi", "mengajak membeli produk", "menilai penyair"], "answer": 0, "quote": "Bagian penting teks eksplanasi meliputi pengenalan fenomena, penjelasan proses atau sebab-akibat, dan penutup atau simpulan."}, {"q": "Deretan penjelas pada teks eksplanasi berisi ...", "options": ["proses atau hubungan sebab-akibat", "identitas buku", "biodata penyair", "harga barang"], "answer": 0, "quote": "Bagian penting teks eksplanasi meliputi pengenalan fenomena, penjelasan proses atau sebab-akibat, dan penutup atau simpulan."}, {"q": "Kalimat efektif harus mudah ...", "options": ["dipahami", "disalahartikan", "dipanjangkan", "diubah"], "answer": 0, "quote": "Kalimat efektif adalah kalimat yang jelas, hemat, tepat, dan mudah dipahami. Kalimat tidak efektif biasanya bertele-tele, rancu, atau memakai kata yang mubazir."}, {"q": "Kalimat tidak efektif sering memakai kata yang ...", "options": ["mubazir", "tepat", "hemat", "baku"], "answer": 0, "quote": "Kalimat efektif adalah kalimat yang jelas, hemat, tepat, dan mudah dipahami. Kalimat tidak efektif biasanya bertele-tele, rancu, atau memakai kata yang mubazir."}, {"q": "Teks eksplanasi bersifat ...", "options": ["informatif", "khayalan penuh", "iklan promosi", "drama"], "answer": 0, "quote": "Tujuan teks eksplanasi adalah menjelaskan proses terjadinya suatu fenomena atau hubungan sebab-akibat suatu peristiwa secara logis, runtut, dan informatif."}, {"q": "Tujuan laporan hasil analisis puisi adalah ...", "options": ["menyampaikan hasil pemahaman puisi secara sistematis dan objektif", "membuat puisi baru", "menjual buku puisi", "mengubah puisi jadi cerita"], "answer": 0, "quote": "Tujuan laporan hasil analisis puisi adalah menyampaikan hasil pemahaman dan penafsiran terhadap puisi secara sistematis dan objektif."}, {"q": "Unsur intrinsik puisi meliputi ...", "options": ["tema, diksi, majas, rima, amanat", "harga buku dan nama toko", "tahun cetak dan penerbit saja", "nomor halaman dan ukuran kertas"], "answer": 0, "quote": "Unsur intrinsik puisi meliputi tema, diksi, majas, rima, amanat, nada, suasana, dan tipografi."}, {"q": "Unsur ekstrinsik puisi adalah unsur ...", "options": ["dari luar karya", "di dalam bait pertama", "berupa bunyi akhir", "berupa pilihan kata"], "answer": 0, "quote": "Unsur ekstrinsik puisi adalah unsur dari luar karya, misalnya latar belakang penyair, kondisi sosial, budaya, dan pengalaman yang memengaruhi puisi."}, {"q": "Contoh unsur ekstrinsik puisi adalah ...", "options": ["latar belakang penyair", "rima", "diksi", "tipografi"], "answer": 0, "quote": "Unsur ekstrinsik puisi adalah unsur dari luar karya, misalnya latar belakang penyair, kondisi sosial, budaya, dan pengalaman yang memengaruhi puisi."}, {"q": "Struktur laporan hasil analisis puisi umumnya diawali dengan ...", "options": ["identitas puisi", "harga buku", "teks iklan", "dialog tokoh"], "answer": 0, "quote": "Struktur laporan hasil analisis puisi umumnya terdiri atas identitas puisi, pendahuluan, pembahasan unsur-unsur puisi, dan simpulan."}, {"q": "Setelah identitas puisi, bagian berikutnya biasanya ...", "options": ["pendahuluan", "promosi", "diskon", "lampiran belanja"], "answer": 0, "quote": "Struktur laporan hasil analisis puisi umumnya terdiri atas identitas puisi, pendahuluan, pembahasan unsur-unsur puisi, dan simpulan."}, {"q": "Diksi adalah ...", "options": ["pilihan kata", "bentuk bait", "nada pembaca", "jumlah halaman"], "answer": 0, "quote": "Diksi adalah pilihan kata yang digunakan penyair untuk menimbulkan makna, rasa, dan efek tertentu."}, {"q": "Majas adalah ...", "options": ["gaya bahasa", "jenis kertas", "bagian argumentasi", "kalimat fakta"], "answer": 0, "quote": "Majas adalah gaya bahasa yang dipakai untuk menimbulkan efek keindahan atau makna tertentu, misalnya metafora, personifikasi, dan simile."}, {"q": "Rima adalah ...", "options": ["pengulangan bunyi pada puisi", "susunan data", "pendapat penulis", "latar penyair"], "answer": 0, "quote": "Rima adalah pengulangan bunyi pada puisi yang menimbulkan musikalitas atau keindahan bunyi."}, {"q": "Amanat adalah ...", "options": ["pesan yang ingin disampaikan penyair", "judul puisi", "nama penerbit", "waktu pembacaan"], "answer": 0, "quote": "Amanat adalah pesan atau nilai yang ingin disampaikan penyair kepada pembaca."}, {"q": "Bahasa laporan hasil analisis puisi sebaiknya ...", "options": ["baku, jelas, objektif, sistematis", "seenaknya dan berlebihan", "penuh singkatan gaul", "acak dan rancu"], "answer": 0, "quote": "Bahasa dalam laporan hasil analisis puisi sebaiknya baku, jelas, objektif, sistematis, dan tidak berlebihan."}, {"q": "Tipografi puisi berkaitan dengan ...", "options": ["bentuk visual puisi", "harga karya", "umur penyair", "pemasaran buku"], "answer": 0, "quote": "Tipografi puisi adalah bentuk visual puisi, seperti susunan baris, bait, dan tata letak yang mendukung makna puisi."}, {"q": "Resensi berbeda dari laporan hasil analisis puisi karena resensi ...", "options": ["menilai dan memberi ulasan karya secara umum", "hanya membahas rima", "hanya membahas tipografi", "berisi iklan"], "answer": 0, "quote": "Resensi menilai dan memberi ulasan terhadap karya secara umum, sedangkan laporan hasil analisis puisi lebih fokus menjelaskan unsur-unsur puisi secara sistematis."}, {"q": "Laporan hasil analisis puisi lebih fokus pada ...", "options": ["penjelasan unsur-unsur puisi secara sistematis", "penjualan buku", "riwayat toko buku", "berita harian"], "answer": 0, "quote": "Resensi menilai dan memberi ulasan terhadap karya secara umum, sedangkan laporan hasil analisis puisi lebih fokus menjelaskan unsur-unsur puisi secara sistematis."}, {"q": "Nada puisi adalah ...", "options": ["sikap penyair terhadap pembaca atau terhadap hal yang dibicarakan", "bunyi hujan di luar rumah", "ukuran huruf puisi", "jumlah bait"], "answer": 0, "quote": "Nada puisi adalah sikap penyair terhadap pembaca atau terhadap hal yang dibicarakan, misalnya menggurui, sedih, marah, atau lembut."}, {"q": "Suasana puisi adalah ...", "options": ["perasaan yang dirasakan pembaca setelah membaca puisi", "jenis kertas puisi", "judul puisi", "nama penulis"], "answer": 0, "quote": "Suasana puisi adalah keadaan jiwa atau perasaan yang dirasakan pembaca setelah membaca puisi, misalnya haru, sedih, tenang, atau semangat."}, {"q": "Jika pembaca merasa haru setelah membaca puisi, itu termasuk ...", "options": ["suasana puisi", "diksi", "tipografi", "penegasan ulang"], "answer": 0, "quote": "Suasana puisi adalah keadaan jiwa atau perasaan yang dirasakan pembaca setelah membaca puisi, misalnya haru, sedih, tenang, atau semangat."}, {"q": "Jika penyair terdengar lembut kepada pembaca, itu menunjukkan ...", "options": ["nada puisi", "rima", "opini", "data"], "answer": 0, "quote": "Nada puisi adalah sikap penyair terhadap pembaca atau terhadap hal yang dibicarakan, misalnya menggurui, sedih, marah, atau lembut."}, {"q": "Tipografi dapat mendukung ...", "options": ["makna puisi", "harga buku", "jumlah data", "iklan produk"], "answer": 0, "quote": "Tipografi puisi adalah bentuk visual puisi, seperti susunan baris, bait, dan tata letak yang mendukung makna puisi."}, {"q": "Pembahasan unsur puisi dalam laporan biasanya ada pada bagian ...", "options": ["pembahasan", "judul", "iklan", "catatan kaki saja"], "answer": 0, "quote": "Struktur laporan hasil analisis puisi umumnya terdiri atas identitas puisi, pendahuluan, pembahasan unsur-unsur puisi, dan simpulan."}, {"q": "Tujuan teks argumentasi adalah ...", "options": ["meyakinkan pembaca dengan alasan, fakta, dan data", "menghibur pembaca dengan humor", "mengarang cerita fantasi", "menjelaskan proses alam"], "answer": 0, "quote": "Tujuan teks argumentasi adalah meyakinkan pembaca terhadap suatu pendapat dengan alasan, fakta, dan data yang logis."}, {"q": "Struktur teks argumentasi umumnya terdiri atas ...", "options": ["tesis, argumentasi, penegasan ulang", "orientasi, komplikasi, resolusi", "judul, data, daftar pustaka", "pembuka, isi, iklan"], "answer": 0, "quote": "Struktur teks argumentasi umumnya terdiri atas pendapat atau tesis, rangkaian argumentasi, dan penegasan ulang."}, {"q": "Bagian argumentasi berisi ...", "options": ["alasan, contoh, data, atau bukti", "judul puisi", "susunan bait", "harga barang"], "answer": 0, "quote": "Bagian argumentasi berisi alasan, penjelasan, contoh, data, atau bukti yang mendukung pendapat penulis."}, {"q": "Penegasan ulang adalah ...", "options": ["bagian akhir yang menekankan kembali pendapat penulis", "bagian awal yang mengenalkan topik", "bagian yang berisi biodata", "bagian yang berisi iklan"], "answer": 0, "quote": "Penegasan ulang adalah bagian akhir teks argumentasi yang menekankan kembali pendapat penulis setelah disertai alasan dan bukti."}, {"q": "Kalimat fakta adalah kalimat yang ...", "options": ["dapat dibuktikan kebenarannya", "selalu berupa tebakan", "berisi perasaan pribadi", "tidak punya dasar"], "answer": 0, "quote": "Kalimat fakta adalah kalimat yang dapat dibuktikan kebenarannya dengan data, angka, peristiwa, atau kenyataan yang nyata."}, {"q": "Opini adalah ...", "options": ["pendapat atau penilaian pribadi", "kenyataan yang pasti benar", "angka statistik", "hasil observasi laboratorium"], "answer": 0, "quote": "Opini adalah pendapat, penilaian, atau dugaan pribadi yang belum tentu dapat dibuktikan secara mutlak."}, {"q": "Data dalam teks argumentasi berfungsi untuk ...", "options": ["memperkuat pendapat", "mempercantik tipografi", "mengurangi panjang teks", "mengganti kesimpulan"], "answer": 0, "quote": "Data dalam teks argumentasi berfungsi memperkuat pendapat agar lebih meyakinkan dan tidak sekadar opini."}, {"q": "Konjungsi yang sering dipakai dalam argumentasi antara lain ...", "options": ["karena, oleh karena itu, namun", "wah, aduh, oh", "aku, kamu, dia", "cepat, lambat, sedang"], "answer": 0, "quote": "Konjungsi yang sering dipakai dalam teks argumentasi antara lain karena, sebab, oleh karena itu, namun, jadi, selain itu, dan dengan demikian."}, {"q": "Bagian awal teks argumentasi biasanya berupa ...", "options": ["pendapat atau tesis", "daftar harga", "tipografi", "rima"], "answer": 0, "quote": "Struktur teks argumentasi umumnya terdiri atas pendapat atau tesis, rangkaian argumentasi, dan penegasan ulang."}, {"q": "Kalimat 'Menurut saya, sekolah ini paling nyaman' termasuk ...", "options": ["opini", "fakta", "data angka", "penegasan ulang"], "answer": 0, "quote": "Opini adalah pendapat, penilaian, atau dugaan pribadi yang belum tentu dapat dibuktikan secara mutlak."}, {"q": "Kalimat 'Jumlah siswa kelas IX ada 120 orang' termasuk ...", "options": ["fakta", "opini", "majas", "suasana"], "answer": 0, "quote": "Kalimat fakta adalah kalimat yang dapat dibuktikan kebenarannya dengan data, angka, peristiwa, atau kenyataan yang nyata."}, {"q": "Dalam teks argumentasi, data membuat pendapat menjadi ...", "options": ["lebih meyakinkan", "lebih kabur", "lebih acak", "lebih lucu"], "answer": 0, "quote": "Data dalam teks argumentasi berfungsi memperkuat pendapat agar lebih meyakinkan dan tidak sekadar opini."}, {"q": "Kata hubung 'selain itu' dalam teks argumentasi membantu ...", "options": ["menambahkan alasan", "menghapus tesis", "mengubah puisi", "membuat rima"], "answer": 0, "quote": "Konjungsi yang sering dipakai dalam teks argumentasi antara lain karena, sebab, oleh karena itu, namun, jadi, selain itu, dan dengan demikian."}, {"q": "Setelah argumentasi dipaparkan, penulis biasanya menutup dengan ...", "options": ["penegasan ulang", "tipografi", "identitas puisi", "rima"], "answer": 0, "quote": "Penegasan ulang adalah bagian akhir teks argumentasi yang menekankan kembali pendapat penulis setelah disertai alasan dan bukti."}];
+const materialScreen = document.getElementById('materialScreen');
+const quizScreen = document.getElementById('quizScreen');
+const resultScreen = document.getElementById('resultScreen');
+const startBtn = document.getElementById('startBtn');
+const bgm = document.getElementById('bgm');
+const counter = document.getElementById('counter');
+const scoreLive = document.getElementById('scoreLive');
+const questionText = document.getElementById('questionText');
+const optionsWrap = document.getElementById('optionsWrap');
+const feedbackBox = document.getElementById('feedbackBox');
+const feedbackState = document.getElementById('feedbackState');
+const feedbackQuote = document.getElementById('feedbackQuote');
+const nextBtn = document.getElementById('nextBtn');
+const progressBar = document.getElementById('progressBar');
+const finalScore = document.getElementById('finalScore');
+const finalText = document.getElementById('finalText');
+const retryBtn = document.getElementById('retryBtn');
+const backBtn = document.getElementById('backBtn');
+let current = 0, score = 0, answered = false;
+
+function forcePlayAudio() {
+  const p = bgm.play();
+  if (p && typeof p.catch === 'function') p.catch(() => {});
+}
+function showScreen(name) {
+  [materialScreen, quizScreen, resultScreen].forEach(s => s.classList.remove('active'));
+  if (name === 'material') materialScreen.classList.add('active');
+  if (name === 'quiz') quizScreen.classList.add('active');
+  if (name === 'result') resultScreen.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  forcePlayAudio();
+}
+function renderQuestion() {
+  const item = questions[current];
+  answered = false;
+  counter.textContent = `Soal ${current + 1} dari ${questions.length}`;
+  scoreLive.textContent = `Skor: ${score}`;
+  questionText.textContent = item.q;
+  optionsWrap.innerHTML = '';
+  feedbackBox.className = 'feedback';
+  feedbackState.textContent = '';
+  feedbackQuote.textContent = '';
+  progressBar.style.width = `${(current / questions.length) * 100}%`;
+  item.options.forEach((opt, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = opt;
+    btn.addEventListener('click', () => selectAnswer(idx, btn));
+    optionsWrap.appendChild(btn);
+  });
+}
+function selectAnswer(selectedIndex, selectedBtn) {
+  if (answered) return;
+  answered = true;
+  const item = questions[current];
+  const buttons = [...document.querySelectorAll('.option')];
+  buttons.forEach((btn, idx) => {
+    btn.disabled = true;
+    if (idx === item.answer) btn.classList.add('correct');
+  });
+  if (selectedIndex === item.answer) {
+    score++;
+    scoreLive.textContent = `Skor: ${score}`;
+    feedbackBox.classList.add('show', 'correct');
+    feedbackState.textContent = 'Jawaban benar.';
+  } else {
+    selectedBtn.classList.add('wrong');
+    feedbackBox.classList.add('show', 'wrong');
+    feedbackState.textContent = 'Belum tepat.';
+  }
+  feedbackQuote.textContent = item.quote;
+  progressBar.style.width = `${((current + 1) / questions.length) * 100}%`;
+  forcePlayAudio();
+}
+function showResult() {
+  const nilai = Math.round((score / questions.length) * 100);
+  finalScore.textContent = `${score}/${questions.length}`;
+  let pesan = '';
+  if (nilai >= 90) pesan = 'Mantap, pemahaman kamu sudah sangat kuat.';
+  else if (nilai >= 75) pesan = 'Bagus, tinggal sedikit lagi biar makin mantap.';
+  else if (nilai >= 60) pesan = 'Lumayan, coba baca lagi materi halaman 1 lalu ulangi.';
+  else pesan = 'Tenang, baca ulang materinya pelan-pelan lalu coba lagi.';
+  finalText.textContent = `Nilai kamu ${nilai}. ${pesan}`;
+  showScreen('result');
+}
+startBtn.addEventListener('click', () => { current = 0; score = 0; showScreen('quiz'); renderQuestion(); });
+nextBtn.addEventListener('click', () => { if (!answered) return; current++; if (current >= questions.length) showResult(); else renderQuestion(); });
+retryBtn.addEventListener('click', () => { current = 0; score = 0; showScreen('quiz'); renderQuestion(); });
+backBtn.addEventListener('click', () => { showScreen('material'); document.getElementById('materialContent').scrollTo({ top: 0, behavior: 'smooth' }); });
+window.addEventListener('load', forcePlayAudio);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) forcePlayAudio(); });
+['click','touchstart','pointerdown'].forEach(evt => { document.addEventListener(evt, forcePlayAudio, { once: true }); });
+</script>
+</body>
+</html>
